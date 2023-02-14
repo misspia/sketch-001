@@ -1,17 +1,15 @@
 const projectName = require('./package.json').name
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
 
 module.exports = {
 	entry: './index.js',
-	output: {
-		clean: true,
-	},
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: `${projectName}`,
 			containerId: `root`,
 			template: './src/template.html',
-			filename: 'index.html',
+			filename: path.join(__dirname, 'index.html'),
 		}),
 	],
 	module: {
