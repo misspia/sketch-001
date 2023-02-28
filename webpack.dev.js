@@ -6,9 +6,6 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
 	mode: 'development',
 	devServer: {
-		static: {
-			directory: __dirname,
-		},
 		port: 8080,
 	},
 	plugins: [

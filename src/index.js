@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import React from 'react'
-import { Page } from './src/Page'
+import { Page } from './Page'
 
 export default function View() {
   return (

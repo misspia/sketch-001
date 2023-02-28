@@ -3,16 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
 module.exports = {
-	entry: './index.js',
-	plugins: [
-		new HtmlWebpackPlugin({
-			title: `${projectName}`,
-			containerId: `root`,
-			template: './src/template.html',
-			filename: path.join(__dirname, 'index.html'),
-		}),
-	],
-	module: {
+  entry: path.join(__dirname, "src", "index.js"),
+  output: {
+		clean: true,
+    path: path.join(__dirname, "docs"),
+    filename: "bundle.js"
+  },
+  module: {
 		rules: [
 			{
 				test: /\.(pdf|png|jpg|jpeg|gif|ico|mp3|json)$/,
@@ -50,6 +47,15 @@ module.exports = {
 		],
 	},
 	resolve: {
-		extensions: ['.js', '.jsx'],
-	},
-}
+				extensions: ['.js', '.jsx'],
+			},
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: path.join(__dirname, "src", "template.html"),
+			inject: true,
+			containerId: 'root',
+			title: projectName
+    })
+  ]
+};
